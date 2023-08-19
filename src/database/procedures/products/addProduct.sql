@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE addProduction
+CREATE OR ALTER PROCEDURE addProduct
     @id VARCHAR(250),
     @name VARCHAR(250),
     @description VARCHAR(500),
@@ -10,6 +10,7 @@ CREATE OR ALTER PROCEDURE addProduction
         @id,
         @name,
         @description,
-        @image       
+        @image,
+        @price    
         )
 END

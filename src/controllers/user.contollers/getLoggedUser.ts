@@ -16,11 +16,11 @@ const getLoggedUser = (req: Request, res: Response) => {
     res
       .status(StatusCodes.OK)
       .json({ message: "User fetched successfully", user: decodedData });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ message: "Server Error" });
+      .json({ message: error.message });
   }
 };
 export default getLoggedUser;

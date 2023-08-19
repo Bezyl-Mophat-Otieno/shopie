@@ -1,11 +1,11 @@
 import { Router } from "express";
-import fetchUsers from "../controllers/fetchUsers.js";
-import addUser from "../controllers/addUser.js";
-import deleteUser from "../controllers/deleteUser.js";
-import updateUser from "../controllers/updateUser.js";
-import loginUser from "../controllers/loginUser.js";
-import getLoggedUser from "../controllers/getLoggedUser.js";
-import resetPassword from "../controllers/resetPassword.js";
+import addUser from "../controllers/user.contollers/addUser.js";
+import fetchUsers from "../controllers/user.contollers/fetchUsers.js";
+import deleteUser from "../controllers/user.contollers/deleteUser.js";
+import updateUser from "../controllers/user.contollers/updateUser.js";
+import loginUser from "../controllers/user.contollers/loginUser.js";
+import getLoggedUser from "../controllers/user.contollers/getLoggedUser.js";
+import resetPassword from "../controllers/user.contollers/resetPassword.js";
 const userRoutes = Router();
 userRoutes.post("/add", addUser);
 userRoutes.get("/", fetchUsers);
