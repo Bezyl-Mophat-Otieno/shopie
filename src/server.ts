@@ -3,13 +3,13 @@ import {dbConnection} from "./config/db.js";
 dotenv.config();
 import express from "express";
 import { json } from "express";
-import createUserRoute from "./routes/createUser.routes.js";
+import userRoutes from "./routes/user.routes.js";
 const app = express()
 app.use(json())
 const PORT = process.env.PORT 
 
 // Endpoints for my api
-app.use('/api/v1/users/',createUserRoute)
+app.use('/api/v1/users/',userRoutes)
 
 
 

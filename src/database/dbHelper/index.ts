@@ -1,28 +1,21 @@
-import mssql ,{Request} from 'mssql'
-import { sqlConfig } from '../../config/db.js'
-
-
+import mssql, { Request } from "mssql";
+import { sqlConfig } from "../../config/db.js";
 
 interface dataInput {
-    [key:string]:any
+  [key: string]: any;
 }
-
 
 class DB {
-
-    static async executeProcedure ( procedureName:string , data:dataInput={}){
-
-    const request:Request = (await mssql.connect(sqlConfig)).request()
+  static async executeProcedure(procedureName: string, data: dataInput = {}) {
+    const request: Request = (await mssql.connect(sqlConfig)).request();
 
     for (let key in data) {
-        request.input(key, data[key])
+      request.input(key, data[key]);
     }
-    const result = await request.execute(procedureName)
+    const result = await request.execute(procedureName);
 
-    return result
-
+    return result;
+  }
 }
 
-}
-
-export default DB
+export default DB;

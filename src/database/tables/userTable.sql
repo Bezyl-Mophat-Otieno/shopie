@@ -12,3 +12,12 @@ END TRY
 BEGIN CATCH
     THROW 50001, 'An error occurred while creating the productTable', 1;
 END CATCH;
+
+GO
+
+ALTER TABLE userTable
+ADD CONSTRAINT email_unique UNIQUE (email);
+
+
+ALTER TABLE userTable
+ADD deleted BIT DEFAULT 0;
