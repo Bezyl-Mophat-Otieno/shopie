@@ -1,9 +1,9 @@
 import { Router } from "express";
-import addProduct from "../controllers/product.controllers/addProduct.js";
-import updateProduct from "../controllers/product.controllers/updateProduct.js";
-import fetchProducts from "../controllers/product.controllers/fetchProducts.js";
-import deleteProduct from "../controllers/product.controllers/deleteProduct.js";
-import getProduct from "../controllers/product.controllers/getProduct.js";
+import addProduct from "../controllers/product.controllers/addProduct.ts";
+import updateProduct from "../controllers/product.controllers/updateProduct.ts";
+import fetchProducts from "../controllers/product.controllers/fetchProducts.ts";
+import deleteProduct from "../controllers/product.controllers/deleteProduct.ts";
+import getProduct from "../controllers/product.controllers/getProduct.ts";
 const productRouter = Router();
 
 productRouter.get("/", fetchProducts);

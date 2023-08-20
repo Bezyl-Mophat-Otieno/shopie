@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import DB from "../../database/dbHelper/index.js";
+import DB from "../../database/dbHelper/index.ts";
 import { v4 } from "uuid";
 
 const addUser = async (req: Request, res: Response) => {

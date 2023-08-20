@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import DB from "../../database/dbHelper/index.js";
+import DB from "../../database/dbHelper/index.ts";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 

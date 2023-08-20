@@ -1,5 +1,5 @@
 import mssql, { Request } from "mssql";
-import { sqlConfig } from "../../config/db.js";
+import { sqlConfig } from "../../config/db.ts";
 
 interface dataInput {
   [key: string]: any;

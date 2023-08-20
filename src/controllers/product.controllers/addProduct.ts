@@ -1,4 +1,4 @@
-import DB from "../../database/dbHelper/index.js";
+import DB from "../../database/dbHelper/index.ts";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { v4 } from "uuid";

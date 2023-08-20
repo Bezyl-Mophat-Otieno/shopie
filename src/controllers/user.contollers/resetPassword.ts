@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import DB from "../../database/dbHelper/index.js";
+import DB from "../../database/dbHelper/index.ts";
 import { StatusCodes } from "http-status-codes";
-import sendMail from "../../database/emailService/sendMail.js";
+import sendMail from "../../database/emailService/sendMail.ts";
 
 const resetPassword = async (req: Request, res: Response) => {
   try {

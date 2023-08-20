@@ -1,11 +1,11 @@
 import { Router } from "express";
-import addUser from "../controllers/user.contollers/addUser.js";
-import fetchUsers from "../controllers/user.contollers/fetchUsers.js";
-import deleteUser from "../controllers/user.contollers/deleteUser.js";
-import updateUser from "../controllers/user.contollers/updateUser.js";
-import loginUser from "../controllers/user.contollers/loginUser.js";
-import getLoggedUser from "../controllers/user.contollers/getLoggedUser.js";
-import resetPassword from "../controllers/user.contollers/resetPassword.js";
+import addUser from "../controllers/user.contollers/addUser.ts";
+import fetchUsers from "../controllers/user.contollers/fetchUsers.ts";
+import deleteUser from "../controllers/user.contollers/deleteUser.ts";
+import updateUser from "../controllers/user.contollers/updateUser.ts";
+import loginUser from "../controllers/user.contollers/loginUser.ts";
+import getLoggedUser from "../controllers/user.contollers/getLoggedUser.ts";
+import resetPassword from "../controllers/user.contollers/resetPassword.ts";
 
 const userRoutes = Router();
 

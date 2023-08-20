@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import DB from "../../database/dbHelper/index.js";
+import DB from "../../database/dbHelper/index.ts";
 import { Request, Response } from "express";
 
 const updateProduct = async (req: Request, res: Response) => {

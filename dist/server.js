@@ -12,6 +12,6 @@ const PORT = process.env.PORT;
 app.use("/api/v1/users/", userRoutes);
 app.use("/api/v1/products/", productRouter);
 app.listen(PORT, async () => {
-    await dbConnection();
-    console.log(`Server running on port ${PORT}`);
+  await dbConnection();
+  console.log(`Server running on port ${PORT}`);
 });

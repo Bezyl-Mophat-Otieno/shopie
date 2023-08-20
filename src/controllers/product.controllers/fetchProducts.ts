@@ -1,4 +1,4 @@
-import DB from "../../database/dbHelper/index.js";
+import DB from "../../database/dbHelper/index.ts";
 import { Request, Response } from "express";
 
 const fetchProducts = async (req: Request, res: Response) => {
