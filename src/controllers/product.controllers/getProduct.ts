@@ -9,6 +9,7 @@ const getProduct = async (req: Request, res: Response) => {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "Id is required" });
+
     const result = await DB.executeProcedure("getProduct", { id });
     const product = result.recordset[0];
     if (result.recordset.length === 0)
