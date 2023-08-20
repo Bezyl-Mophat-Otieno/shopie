@@ -7,7 +7,6 @@
   "scripts": {
     "start:dev": "nodemon ./src/server.ts",
     "test": "jest --watch",
-    "dev": "concurrently \"tsc --watch\" \"nodemon dist/server.js\"",
     "build": "tsc"
   },
   "jest": {
