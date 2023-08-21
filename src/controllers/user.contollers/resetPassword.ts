@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import DB from "../../database/dbHelper/index.ts";
 import { StatusCodes } from "http-status-codes";
 import sendMail from "../../database/emailService/sendMail.ts";
+import jwt from "jsonwebtoken";
 
 const resetPassword = async (req: Request, res: Response) => {
   try {
@@ -19,6 +20,12 @@ const resetPassword = async (req: Request, res: Response) => {
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "User does not exist" });
     } else {
+      // create a token before sending the email
+      const token = await jwt.sign(
+        { user: user },
+        process.env.JWT_SECRET as string,
+        { expiresIn: "1h" }
+      );
       const messageOptions = {
         from: process.env.EMAIL as string,
         to: user.email,
@@ -32,6 +39,7 @@ const resetPassword = async (req: Request, res: Response) => {
       await sendMail(messageOptions);
       return res.status(StatusCodes.OK).json({
         message: "Please check your email for the password reset link",
+        token: token,
       });
     }
   } catch (error: any) {

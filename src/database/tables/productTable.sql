@@ -11,3 +11,8 @@ END TRY
 BEGIN CATCH
     THROW 50001, 'An error occurred while creating the productTable', 1;
 END CATCH;
+
+GO 
+
+-- ALTER TABLE productTable
+-- ADD quantity INT DEFAULT 1;

@@ -6,6 +6,7 @@ import updateUser from "../controllers/user.contollers/updateUser.ts";
 import loginUser from "../controllers/user.contollers/loginUser.ts";
 import getLoggedUser from "../controllers/user.contollers/getLoggedUser.ts";
 import resetPassword from "../controllers/user.contollers/resetPassword.ts";
+import verifyPassword from "../middleware/verifyPasswordReset.ts";
 
 const userRoutes = Router();
 
@@ -15,6 +16,9 @@ userRoutes.put("/delete/:id", deleteUser);
 userRoutes.put("/:id", updateUser);
 userRoutes.post("/login", loginUser);
 userRoutes.get("/user", getLoggedUser);
+// click on the link to reset the password
 userRoutes.post("/reset", resetPassword);
+// reset the password in the reset password page
+userRoutes.put("/reset/:id", verifyPassword, updateUser);
 
 export default userRoutes;
