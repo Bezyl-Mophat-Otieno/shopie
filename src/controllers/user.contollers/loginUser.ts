@@ -2,22 +2,29 @@ import { Request, Response } from "express";
 import DB from "../../database/dbHelper/index.ts";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { StatusCodes } from "http-status-codes";
 
 const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.status(400).json({ message: "Please enter all fields" });
+      return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json({ message: "Please enter all fields" });
     }
 
     // fetch the user from the database
     const result = await DB.executeProcedure("getUser", { email });
     const user = result.recordset[0];
     if (result.recordset.length === 0) {
-      return res.status(400).json({ message: "User does not exist" });
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "User does not exist" });
     } else {
       if (user.deleted === true) {
-        return res.status(400).json({ message: "Your account is deactivated" });
+        return res
+          .status(StatusCodes.BAD_REQUEST)
+          .json({ message: "Your account is deactivated" });
       }
       // compare the password
       const isMatch = await bcrypt.compare(password, user.password);
@@ -27,17 +34,19 @@ const loginUser = async (req: Request, res: Response) => {
           expiresIn: "1h",
         });
         return res
-          .status(200)
+          .status(StatusCodes.OK)
           .json({ message: "Login successful", token, status: "success" });
       } else {
         return res
-          .status(400)
-          .json({ message: "Invalid credentials", status: "false" });
+          .status(StatusCodes.BAD_REQUEST)
+          .json({ message: "Invalid credentials", status: "failed" });
       }
     }
   } catch (error: any) {
     console.log(error);
-    return res.status(500).json({ message: error.message });
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: error.message });
   }
 };
 export default loginUser;

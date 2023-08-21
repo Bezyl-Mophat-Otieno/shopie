@@ -10,7 +10,9 @@ const fetchProducts = async (req: Request, res: Response) => {
       return res
         .status(StatusCodes.NOT_FOUND)
         .json({ message: "No products found" });
-    return res.status(StatusCodes.OK).json(products);
+    return res
+      .status(StatusCodes.OK)
+      .json({ products: products, status: "success" });
   } catch (error: any) {
     console.log(error);
     return res

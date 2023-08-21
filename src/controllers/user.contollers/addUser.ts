@@ -14,7 +14,7 @@ const addUser = async (req: Request, res: Response) => {
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "Please provide all the required fields" });
     } else {
-      const hashedPassword = await bcrypt.hash(password, 5);
+      const hashedPassword: string = await bcrypt.hash(password, 5);
       const result = await DB.executeProcedure("addUser", {
         ...payload,
         id,
@@ -28,7 +28,7 @@ const addUser = async (req: Request, res: Response) => {
       } else {
         return res
           .status(StatusCodes.INTERNAL_SERVER_ERROR)
-          .json({ message: "Something went wrong", status: "failure" });
+          .json({ message: "User already exists", status: "failed" });
       }
     }
   } catch (error) {

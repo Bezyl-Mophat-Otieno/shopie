@@ -13,14 +13,13 @@ const getLoggedUser = (req: Request, res: Response) => {
       token as string,
       process.env.JWT_SECRET_KEY as string
     );
+
     res
       .status(StatusCodes.OK)
       .json({ message: "User fetched successfully", user: decodedData });
   } catch (error: any) {
     console.log(error);
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ message: error.message });
+    res.status(StatusCodes.UNAUTHORIZED).json({ message: error.message });
   }
 };
 export default getLoggedUser;

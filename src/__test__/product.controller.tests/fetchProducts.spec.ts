@@ -30,20 +30,32 @@ describe("Fetch Producst Tests", () => {
       status: jest.fn().mockReturnThis(),
     } as unknown as Response;
 
-    const mockedProduct = {
-      id: "dsjchj",
-      name: "test",
-      description: "test",
-      price: 10,
-      Image: null,
-    };
+    const mockedProducts = [
+      {
+        id: "1",
+        name: "test",
+        description: "test",
+        price: 10,
+        Image: null,
+      },
+      {
+        id: "2",
+        name: "test2",
+        description: "test2",
+        price: 11,
+        Image: null,
+      },
+    ];
 
     await (DB.executeProcedure as jest.Mock).mockResolvedValueOnce({
-      recordset: [mockedProduct],
+      recordset: mockedProducts,
     });
 
     await fetchProducts(mockedReq, mockedRes);
     expect(mockedRes.status).toHaveBeenCalledWith(200);
-    expect(mockedRes.json).toHaveBeenCalledWith([mockedProduct]);
+    expect(mockedRes.json).toHaveBeenCalledWith({
+      products: mockedProducts,
+      status: "success",
+    });
   });
 });
