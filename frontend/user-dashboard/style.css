@@ -12,13 +12,16 @@ body {
 
 .nav {
   width: 100vw;
-  height: 8vh;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   background-color: #040403;
   color: #fffffc;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 .brand-name {
   font-size: 50px;
@@ -75,14 +78,14 @@ body {
   align-items: center;
   width: 20vw;
   /* border: 2px solid blue; */
-  margin-bottom: 1vh;
+  margin-bottom: 5vh;
 }
 
 .product-img {
   border-radius: 10px;
   width: 20vw;
   height: 50vh;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 3vh;
 }
 .product-img:hover {
@@ -116,7 +119,7 @@ body {
   border: 1px solid #040403;
   border-radius: 10px;
   font-size: 30px;
-  color: green;
+  color: #040403;
 }
 .quntity {
   width: 8vw;

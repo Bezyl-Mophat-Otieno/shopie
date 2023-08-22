@@ -7,12 +7,52 @@ body {
   font-family: "Montserrat", sans-serif;
   display: flex;
   flex-direction: column;
-  width: 99vw;
-  height: 99vh;
+  width: 100vw;
   /* border: 3px solid #040403; */
   justify-content: center;
   align-items: center;
   background-color: #fffffc;
+  overflow: hidden;
+}
+
+.nav {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #040403;
+  color: #fffffc;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.brand-name {
+  font-size: 50px;
+}
+
+.menu {
+  width: 60vw;
+}
+.menu > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  list-style: none;
+}
+.menu > ul > li {
+  list-style: none;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 25px;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  color: #fffffc;
+  list-style: none;
 }
 
 .alert {
@@ -77,12 +117,13 @@ body {
 }
 
 .brand {
+  margin: 5vh;
   width: 40vw;
-  height: 100%;
+  height: 90%;
   /* border: 2px solid green; */
 }
 .brand-img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 80vh;
   object-fit: cover;
 }

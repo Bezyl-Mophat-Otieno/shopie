@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  /* border: 3px solid #040403; */
+  justify-content: center;
+  align-items: center;
+  background-color: #fffffc;
+  overflow: hidden;
+}
+
+.nav {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #040403;
+  color: #fffffc;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.brand-name {
+  font-size: 50px;
+}
+
+.menu {
+  width: 60vw;
+}
+.menu > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  list-style: none;
+}
+.menu > ul > li {
+  list-style: none;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 25px;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  color: #fffffc;
+  list-style: none;
+}
+
+.alert {
+  margin: 5vh;
+  font-size: 20px;
+  color: red;
+}
+
+.main {
+  width: 95vw;
+  height: 90vh;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-container {
+  width: 30vw;
+  height: 95%;
+  /* border: 2px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.form-container > input {
+  width: 80%;
+  height: 10%;
+  border: 2px solid #040403;
+  margin: 10px;
+  padding: 13px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+.form-container > textarea {
+  width: 80%;
+  border: 2px solid #040403;
+  margin: 10px;
+  padding: 13px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+.form-container > button {
+  width: 80%;
+  height: 10%;
+  border: 2px solid #040403;
+  margin: 10px;
+  padding: 13px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background-color: #040403;
+  color: white;
+  cursor: pointer;
+}
+.form-container > button:hover {
+  background-color: white;
+  color: #040403;
+}
+.register-link {
+  font-size: 2rem;
+}
+.register-link > a {
+  text-decoration: none;
+  color: #0b3591;
+}
+
+.product-container {
+  margin: 2vh;
+  width: 60vw;
+  height: 99%;
+  /* border: 2px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  border: 2px solid #30110d;
+  margin-bottom: 5vh;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.product-img {
+  border-radius: 10px;
+  width: 20vw;
+  height: 20vh;
+  object-fit: contain;
+  margin-bottom: 3vh;
+}
+.product-img:hover {
+  transform: scale(1.01);
+  transition: all 0.5s ease-in-out;
+}
+
+.product-name {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+.product-desc {
+  text-align: center;
+  width: 20vw;
+  font-size: 15px;
+  font-weight: 400px;
+  margin-bottom: 1vh;
+}
+
+.details {
+  display: flex;
+  gap: 40px;
+}
+
+.price {
+  width: 10vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #040403;
+  border-radius: 10px; */
+  font-size: 30px;
+  color: #040403;
+}
+.quntity {
+  width: 8vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 10px; */
+  font-size: 30px;
+  /* background-color: #040403; */
+  color: #040403;
+}
+
+.actions {
+  width: 80%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-btn-update {
+  width: 80%;
+  height: 10%;
+  border: 2px solid #19381f;
+  margin: 10px;
+  padding: 13px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background-color: #19381f;
+  color: white;
+  cursor: pointer;
+}
+.action-btn-update:hover {
+  background-color: white;
+  color: #040403;
+}
+
+.action-btn-delete {
+  width: 80%;
+  height: 10%;
+  border: 2px solid #2b2118;
+  margin: 10px;
+  padding: 13px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background-color: #30110d;
+  color: white;
+  cursor: pointer;
+}
+.action-btn-delete:hover {
+  background-color: white;
+  color: #040403;
+}
