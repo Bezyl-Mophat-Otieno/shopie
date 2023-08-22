@@ -1,4 +1,0 @@
-CREATE OR ALTER PROCEDURE fetchProducts
-AS BEGIN
-    SELECT * FROM productTable
-END
