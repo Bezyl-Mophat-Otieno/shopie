@@ -214,6 +214,10 @@ nav{
     body{
         font-size: 0.6rem;
     }
+    .authbtn{
+        font-size: 0.8rem;
+        width: 5rem;
+    }
     .remove-btn{
         font-size: .4rem
     }   
@@ -221,6 +225,9 @@ nav{
 @media screen and (max-width: 720px){
     body{
         font-size: 0.6rem;
+    }
+    .authbtn{
+        font-size: 0.8rem;
     }
     .product{
         width: 100vw;
@@ -237,6 +244,15 @@ nav{
     .remove-btn{
         font-size: .5rem
     }   
+}
+@media screen and (max-width: 540px){
+    .right{
+        display: none;
+    }
+    .left{
+        width: 100%;
+    }
+    
 }
 @media screen and (max-width: 360px){
     body{
