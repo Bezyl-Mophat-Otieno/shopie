@@ -31,11 +31,11 @@ const addUser = async (req: Request, res: Response) => {
           .json({ message: "User already exists", status: "failed" });
       }
     }
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ message: "Something went wrong" });
+      .json({ message: error.message, status: "failed" });
   }
 };
 

@@ -115,13 +115,6 @@ body {
   background-color: white;
   color: #040403;
 }
-.register-link {
-  font-size: 2rem;
-}
-.register-link > a {
-  text-decoration: none;
-  color: #0b3591;
-}
 
 .product-container {
   margin: 2vh;
@@ -151,10 +144,10 @@ body {
 }
 
 .product-img {
-  border-radius: 10px;
+  border-radius: 20px;
   width: 20vw;
   height: 20vh;
-  object-fit: contain;
+  object-fit: cover;
   margin-bottom: 3vh;
 }
 .product-img:hover {

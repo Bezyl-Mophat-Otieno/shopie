@@ -3,14 +3,16 @@ CREATE OR ALTER PROCEDURE addProduct
     @name VARCHAR(250),
     @description VARCHAR(500),
     @image VARCHAR(300) = NULL,
+    @quantity INT = NULL,
     @price DECIMAL(10,2)
     AS BEGIN 
-    INSERT INTO productTable (id, name, description, image, price)
+    INSERT INTO productTable (id, name, description, image, price,quantity)
     VALUES (
         @id,
         @name,
         @description,
         @image,
+        @quantity,
         @price    
         )
 END
