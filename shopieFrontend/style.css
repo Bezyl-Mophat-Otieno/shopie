@@ -3,7 +3,7 @@
     --lightgray: rgb(220, 220, 220);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&family=Outfit:wght@400;700&family=Poppins:wght@100;200;300&family=Rubik:wght@300;400;500&display=swap"');
 
 *{
     padding: 0;
@@ -125,3 +125,134 @@ nav{
     font-weight: bold;
 }
 
+/*  Cart styling */
+/* .totalContainer {
+    margin: 3vh;
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 15%;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: #312f2f;
+} 
+.total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #fffffc;
+} 
+.checkout-btn {
+    margin-right: 2vw;
+    width: 15vw;
+    height: 8vh;
+    border: 2px solid #040403;
+    margin: 10px;
+    padding: 13px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    background-color: #040403;
+    color: white;
+    cursor: pointer;
+}
+.checkout-btn:hover {
+    background-color: white;
+    color: #040403;
+} */
+.product{
+    width: 100vw;
+    margin: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+  
+.product-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+}
+  
+.remove-btn {
+    margin-right: 2vw;
+    width: 12vw;
+    height: 18%;
+    border: 2px solid #040403;
+    /* margin: 10px; */
+    padding: 1px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    background-color: #fffffc;
+    color: #040403;
+    cursor: pointer;
+}
+.price{
+    font-weight: bold;
+}
+
+.remove-btn:hover {
+    background-color: #040403;
+    color: #fffffc;
+}
+
+@media screen and (max-width: 1000px){
+    body{
+        font-size: 0.8rem;
+    }
+    .remove-btn{
+        font-size: .5rem
+    }   
+}
+@media screen and (max-width: 840px){
+    body{
+        font-size: 0.6rem;
+    }
+    .remove-btn{
+        font-size: .4rem
+    }   
+}
+@media screen and (max-width: 720px){
+    body{
+        font-size: 0.6rem;
+    }
+    .product{
+        width: 100vw;
+        margin: 3vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-evenly; */
+        /* align-items: center; */
+    }
+    #searchbar{
+        width: 4rem;
+    }
+      
+    .remove-btn{
+        font-size: .5rem
+    }   
+}
+@media screen and (max-width: 360px){
+    body{
+        font-size: 0.6rem;
+    }
+    .logodiv{
+        display: none;
+    }
+    .pages ul li{
+        display: flex;
+        margin-left: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+    .remove-btn{
+        width: 15vw;
+        font-size: .4rem
+    }   
+}
