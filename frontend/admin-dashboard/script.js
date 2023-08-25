@@ -3,6 +3,7 @@ const productPrice = document.querySelector(".productPrice");
 const productDescription = document.querySelector(".productDesc");
 const productImage = document.querySelector("#image");
 const productQuantity = document.querySelector(".quantity");
+console.log(productQuantity);
 const addBtn = document.querySelector(".add-btn");
 const alerts = document.querySelector(".alert");
 const productContainer = document.querySelector(".product-container");
@@ -52,7 +53,6 @@ const checkInputs = async () => {
     productNameValue.length == 0 ||
     productPriceValue.length == 0 ||
     productDescValue.length == 0 ||
-    productImageValue.length == 0 ||
     productQuantityValue.length == 0
   ) {
     alerts.innerHTML = "Please fill in all fields";
@@ -71,43 +71,90 @@ const checkInputs = async () => {
 // Adding the product to the database
 addBtn.addEventListener("click", async (e) => {
   e.preventDefault();
-  const product = await checkInputs();
-  try {
-    const res = await fetch("http://localhost:5000/api/v1/products/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify(product),
-    });
-    console.log(product);
-    const data = await res.json();
-    console.log(data);
-    if (data.status === "success") {
-      await fetchProducts();
-      alerts.innerHTML = data.message;
+
+  if (addBtn.innerHTML == "Add Product") {
+    const product = await checkInputs();
+    try {
+      const res = await fetch("http://localhost:5000/api/v1/products/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify(product),
+      });
+      console.log(product);
+      const data = await res.json();
+      console.log(data);
+      if (data.status === "success") {
+        await fetchProducts();
+        alerts.innerHTML = data.message;
+        setTimeout(() => {
+          alerts.innerHTML = "";
+          productName.value = "";
+          productPrice.value = "";
+          productDescription.value = "";
+          productImage.value = "";
+          productQuantity.value = "";
+        }, 3000);
+      } else {
+        alerts.innerHTML = data.message;
+        setTimeout(() => {
+          alerts.innerHTML = "";
+        }, 3000);
+      }
+    } catch (error) {
+      alert(error.message);
+      console.log(error);
+      alerts.innerHTML = error.message;
       setTimeout(() => {
         alerts.innerHTML = "";
-        productName.value = "";
-        productPrice.value = "";
-        productDescription.value = "";
-        productImage.value = "";
-        productQuantity.value = "";
       }, 3000);
-    } else {
+    }
+  }
+  if (addBtn.innerHTML == "Update Product") {
+    const product = await checkInputs();
+    const id = productContainer.getAttribute("id");
+    console.log(product);
+    try {
+      const res = await fetch(
+        `http://localhost:5000/api/v1/products/update/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+          body: JSON.stringify(product),
+        }
+      );
+      console.log(product);
+      const data = await res.json();
+      console.log(data);
+      if (data.status === "success") {
+        await fetchProducts();
+        alerts.innerHTML = data.message;
+        setTimeout(() => {
+          alerts.innerHTML = "";
+          productName.value = "";
+          productPrice.value = "";
+          productDescription.value = "";
+          productImage.value = "";
+          productQuantity.value = "";
+        }, 3000);
+      } else {
+        alerts.innerHTML = data.message;
+        setTimeout(() => {
+          alerts.innerHTML = "";
+        }, 3000);
+      }
+    } catch (error) {
+      alert(error.message);
       alerts.innerHTML = data.message;
       setTimeout(() => {
         alerts.innerHTML = "";
       }, 3000);
     }
-  } catch (error) {
-    alert(error.message);
-    console.log(error);
-    alerts.innerHTML = error.message;
-    setTimeout(() => {
-      alerts.innerHTML = "";
-    }, 3000);
   }
 });
 
@@ -135,7 +182,7 @@ const fetchProducts = async () => {
         </div>
         <div class="details">
           <div class="price">KSH. ${product.price}/=</div>
-          <div class="quntity">${product.quantity} <small>pieces</small></div>
+          <div class="quntity">${product.quantity} <small> pieces</small></div>
         </div>
         <div class="actions">
           <button class="action-btn-update">Update</button>
@@ -188,6 +235,33 @@ productContainer.addEventListener("click", async (e) => {
       setTimeout(() => {
         alerts.innerHTML = "";
       }, 3000);
+    }
+  }
+  // update a product
+
+  if (e.target.classList.contains("action-btn-update")) {
+    const id = e.target.parentElement.parentElement.id;
+    productContainer.setAttribute("id", id);
+    try {
+      const res = await fetch(`http://localhost:5000/api/v1/products/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      });
+      const object = await res.json();
+      console.log(object);
+      const product = object.product;
+
+      // fill the form with the data
+      productName.value = product.name;
+      productPrice.value = product.price;
+      productDescription.value = product.description;
+      productQuantity.value = product.quantity;
+      addBtn.innerHTML = "Update Product";
+    } catch (error) {
+      console.log(error);
     }
   }
 });

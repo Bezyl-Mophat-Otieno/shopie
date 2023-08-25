@@ -25,6 +25,17 @@ body {
   top: 0;
   z-index: 1000;
 }
+.logo {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-right: 10px;
+}
 .brand-name {
   font-size: 50px;
 }
@@ -74,6 +85,20 @@ body {
   align-items: center;
   color: #fffffc;
 }
+.emptyCart {
+  width: 100vw;
+  /* height: 60vh; */
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.productContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .product {
   width: 100vw;
@@ -120,6 +145,18 @@ body {
   cursor: pointer;
 }
 .remove-btn:hover {
+  background-color: #040403;
+  color: #fffffc;
+}
+
+.quntity {
+  width: 8vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 30px;
   background-color: #040403;
   color: #fffffc;
 }

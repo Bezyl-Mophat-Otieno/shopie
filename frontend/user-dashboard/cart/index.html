@@ -13,81 +13,24 @@
   <body>
     <div class="nav">
       <div class="logo">
-        <h1 class="brand-name">K.O</h1>
+        <img src="../../assets/images/Black.png" alt="" />
       </div>
       <div class="menu">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="../authentication-page/login/index.html">Login</a></li>
+          <li><a href="../../authentication-page/login/index.html">Home</a></li>
+          <li><a href="../authentication-page/login/index.html">Logout</a></li>
         </ul>
       </div>
     </div>
-    <div class="totalContainer">
-      <div class="total">
-        <h1 class="total-text">Total: KSH.1000 /=</h1>
-        <button class="checkout-btn">CHECKOUT</button>
-      </div>
-    </div>
-    <div class="product">
-      <img
-        src="https://i.pinimg.com/236x/0d/76/16/0d76168e87b56b538966aad1d1279447.jpg"
-        alt=""
-        class="product-img"
-      />
-      <div class="product-name">Nike</div>
-      <div class="product-desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-        voluptatum.
-      </div>
-      <div class="price">KSH.100 /=</div>
-      <button class="remove-btn">REMOVE FROM CART</button>
-    </div>
-
-    <div class="product">
-      <img
-        src="https://i.pinimg.com/236x/0d/76/16/0d76168e87b56b538966aad1d1279447.jpg"
-        alt=""
-        class="product-img"
-      />
-      <div class="product-name">Nike</div>
-      <div class="product-desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-        voluptatum.
-      </div>
-      <div class="price">KSH.100 /=</div>
-      <button class="remove-btn">REMOVE FROM CART</button>
-    </div>
-
-    <div class="product">
-      <img
-        src="https://i.pinimg.com/236x/0d/76/16/0d76168e87b56b538966aad1d1279447.jpg"
-        alt=""
-        class="product-img"
-      />
-      <div class="product-name">Nike</div>
-      <div class="product-desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-        voluptatum.
-      </div>
-      <div class="price">KSH.100 /=</div>
-      <button class="remove-btn">REMOVE FROM CART</button>
-    </div>
-
-    <div class="product">
-      <img
-        src="https://i.pinimg.com/236x/0d/76/16/0d76168e87b56b538966aad1d1279447.jpg"
-        alt=""
-        class="product-img"
-      />
-      <div class="product-name">Nike</div>
-      <div class="product-desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-        voluptatum.
-      </div>
-      <div class="price">KSH.100 /=</div>
-      <button class="remove-btn">REMOVE FROM CART</button>
-    </div>
+    <div class="container"></div>
+    <div class="emptyCart"></div>
+    <div class="productContainer"></div>
+    <script>
+      const logo = document.querySelector(".logo");
+      logo.addEventListener("click", () => {
+        window.location.href = "../../authentication-page/login/index.html";
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

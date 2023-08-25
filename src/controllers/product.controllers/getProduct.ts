@@ -16,7 +16,7 @@ const getProduct = async (req: Request, res: Response) => {
       return res
         .status(StatusCodes.NOT_FOUND)
         .json({ message: "Product not found" });
-    return res.status(StatusCodes.OK).json(product);
+    return res.status(StatusCodes.OK).json({ product, status: "success" });
   } catch (error) {}
 };
 export default getProduct;

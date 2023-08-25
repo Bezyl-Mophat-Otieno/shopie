@@ -16,13 +16,12 @@
   <body>
     <div class="nav">
       <div class="logo">
-        <h1 class="brand-name">K.O</h1>
+        <img src="../../assets/images/Black.png" alt="" />
       </div>
       <div class="menu">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="../authentication-page/login/index.html">Login</a></li>
+          <li><a href="../login/index.html">Home</a></li>
+          <li><a href="../register/index.html">Register</a></li>
         </ul>
       </div>
     </div>
@@ -53,6 +52,12 @@
         />
       </div>
     </div>
+    <script>
+      const logo = document.querySelector(".logo");
+      logo.addEventListener("click", () => {
+        window.location.href = "../../authentication-page/login/index.html";
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -7,43 +7,44 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&family=Outfit:wght@400;700&family=Poppins:wght@100;200;300&family=Rubik:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+
     <link rel="stylesheet" href="style.css" />
     <title>SingleProduct-KO</title>
   </head>
   <body>
     <div class="nav">
       <div class="logo">
-        <h1 class="brand-name">K.O</h1>
+        <img src="../../assets/images/Black.png" alt="" />
       </div>
       <div class="menu">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="../authentication-page/login/index.html">Login</a></li>
+          <li>
+            <div class="search">
+              <span
+                ><input type="search" placeholder="Search" id="searchbar" />
+              </span>
+              <span id="searchicon" class="material-symbols-outlined"
+                >manage_search</span
+              >
+            </div>
+          </li>
+          <li><a href="../authentication-page/login/index.html">Home</a></li>
+          <span id="cart" class="material-symbols-outlined"
+            >shopping_cart_checkout</span
+          >
+          <li><a href="../authentication-page/login/index.html">Log-out</a></li>
+          <li>
+            <span id="profile" class="material-symbols-outlined">person</span>
+          </li>
         </ul>
       </div>
     </div>
-    <div class="main">
-      <div class="product-img">
-        <img
-          src="https://i.pinimg.com/236x/8e/95/cc/8e95cc7c57f20fded504b96d63aa0a84.jpg"
-          alt=""
-          class="img"
-        />
-      </div>
-      <div class="product-details">
-        <div class="product-name">Nike</div>
-        <div class="product-desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-          voluptatum.
-        </div>
-        <div class="details">
-          <div class="price">KSH.100 /=</div>
-          <div class="quntity">40 <small>pieces</small></div>
-        </div>
-        <button class="action-btn">Add To Cart</button>
-      </div>
-    </div>
+    <div class="main"></div>
     <script src="script.js"></script>
   </body>
 </html>

@@ -16,25 +16,26 @@
   <body>
     <div class="nav">
       <div class="logo">
-        <h1 class="brand-name">K.O</h1>
+        <img src="../../assets/images/Black.png" alt="" />
       </div>
       <div class="menu">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="../../authentication-page/login/index.html">Home</a></li>
           <li><a href="../authentication-page/login/index.html">Login</a></li>
         </ul>
       </div>
     </div>
     <div class="main">
       <div class="form-container">
-        <div class="alert">Allert Will Go Here</div>
-        <h1 class="brand-name">K.O</h1>
+        <div class="alert"></div>
         <input type="email" class="email" placeholder="Enter Your Email" />
-        <button class="register-btn">CONFIRMATION</button>
-        <p class="register-link">
+        <button class="confirmBtn">CONFIRMATION</button>
+        <p class="login-link">
           Do you have an account?
-          <a href="../../authentication-page//login/index.html">Login</a>
+          <a
+            href="http://127.0.0.1:5500/frontend/authentication-page/login/index.html"
+            >Login</a
+          >
         </p>
       </div>
       <div class="brand">
@@ -45,6 +46,12 @@
         />
       </div>
     </div>
+    <script>
+      const logo = document.querySelector(".logo");
+      logo.addEventListener("click", () => {
+        window.location.href = "../../authentication-page/login/index.html";
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

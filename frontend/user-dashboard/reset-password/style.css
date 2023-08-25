@@ -105,12 +105,24 @@ body {
   background-color: white;
   color: #040403;
 }
-.register-link {
+.login-link {
   font-size: 2rem;
 }
-.register-link > a {
+.login-link > a {
   text-decoration: none;
   color: #0b3591;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-right: 10px;
 }
 
 .brand {
