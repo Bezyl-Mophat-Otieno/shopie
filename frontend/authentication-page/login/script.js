@@ -37,9 +37,7 @@ loginBtn.addEventListener("click", async (e) => {
       if (token) {
         // store the token to localstorage
         localStorage.setItem("token", token);
-
         // get loggedInUser using the token
-
         const res = await fetch("http://localhost:5000/api/v1/users/user", {
           method: "GET",
           headers: {
@@ -49,6 +47,9 @@ loginBtn.addEventListener("click", async (e) => {
           },
         });
         const data = await res.json();
+        // store the user in local storage
+        localStorage.setItem("loggedUser", data.user.username);
+        localStorage.setItem("user_id", data.user.id);
         if (data?.user?.role === "admin") {
           window.location.href =
             "http://127.0.0.1:5500/frontend/admin-dashboard/index.html";

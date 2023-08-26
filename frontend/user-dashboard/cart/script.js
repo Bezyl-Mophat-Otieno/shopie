@@ -1,10 +1,26 @@
 const productContainer = document.querySelector(".productContainer");
 const container = document.querySelector(".container");
 const emptyCart = document.querySelector(".emptyCart");
-
+const profile = document.querySelector(".profile");
+const logout = document.querySelector(".logout");
 window.onload = async () => {
+  const token = localStorage.getItem("token");
+  console.log(typeof token);
+  if (token == null || token == "") {
+    window.location.href =
+      "http://127.0.0.1:5500/frontend/authentication-page/login/index.html";
+  }
   await fetchCart();
+  const username = localStorage.getItem("loggedUser");
+  if (username !== null && username !== "") {
+    profile.innerHTML = user.username;
+  }
 };
+
+logout.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.reload();
+});
 
 const fetchTotal = async () => {
   const products = JSON.parse(localStorage.getItem("cart")) || [];
@@ -67,5 +83,35 @@ productContainer.addEventListener("click", async (e) => {
     if (newProducts.length === 0) {
       window.location.reload();
     }
+  }
+});
+
+container.addEventListener("click", async (e) => {
+  // get the products from the local storage
+  const products = JSON.parse(localStorage.getItem("cart"));
+
+  try {
+    products.map(async (product) => {
+      const requestBody = {
+        user_id: localStorage.getItem("user_id"),
+        name: product.name,
+        price: product.price,
+        quantity: product.quantity,
+        total: product.price * product.quantity,
+      };
+      const res = await fetch("http://localhost:5000/api/v1/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+      const data = await res.json();
+      // clear local storage
+      localStorage.removeItem("cart");
+      window.location.reload();
+    });
+  } catch (error) {
+    console.log(error);
   }
 });

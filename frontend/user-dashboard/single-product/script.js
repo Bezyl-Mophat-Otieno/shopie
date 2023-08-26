@@ -1,7 +1,11 @@
 // fetch the product with the id
-
+const profile = document.querySelector(".profile");
 window.onload = async () => {
   await fetchProduct();
+  const username = localStorage.getItem("loggedUser");
+  if (username !== null || username == "") {
+    profile.innerHTML = username;
+  }
 };
 const main = document.querySelector(".main");
 const productId = window.location.search.split("=")[1];

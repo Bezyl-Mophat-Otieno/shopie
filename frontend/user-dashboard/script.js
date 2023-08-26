@@ -1,31 +1,27 @@
 const main = document.querySelector(".main");
 const searchBar = document.querySelector(".search-bar");
+const profile = document.querySelector(".profile");
+const logout = document.querySelector(".logout");
+const alert = document.querySelector(".alertContainer");
 let products = [];
 window.onload = async () => {
   await fetchProducts();
-  // await fetchNavbar();
+  const username = localStorage.getItem("loggedUser");
+  if (username !== null || username == "") {
+    profile.innerHTML = username;
+  }
+  const token = localStorage.getItem("token");
+  console.log(typeof token);
+  if (token == null || token == "") {
+    window.location.href =
+      "http://127.0.0.1:5500/frontend/authentication-page/login/index.html";
+  }
 };
 
-// const fetchNavbar = async () => {
-//   fetch("../navbar/navbar.html")
-//     .then((res) => {
-window.onload = async () => {
-  await fetchProducts();
-  // await fetchNavbar();
-};
-
-// const fetchNavbar = async () => {
-//   fetch("../navbar/navbar.html")
-//     .then((res) => {
-//       return res.text();
-//     })
-//     .then((html) => {
-//       console.log(html);
-//     })
-//     .catch((error) => {
-//       console.log("Error fetching the navbar", error);
-//     });
-// };
+logout.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.reload();
+});
 
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -60,7 +56,7 @@ const fetchProducts = async () => {
     displayProducts(object);
   } catch (error) {
     console.log(error);
-    alerts.innerHTML = error.message;
+    alert.innerHTML = error.message;
   }
 };
 
@@ -113,9 +109,14 @@ productContainer.addEventListener("click", async (e) => {
         cart.push(product);
       }
       localStorage.setItem("cart", JSON.stringify(cart));
-
-      window.location.href =
-        "http://127.0.0.1:5500/frontend/user-dashboard/cart/index.html";
+      alert.innerHTML = `
+      <div class="alert">
+      Product Added to Cart successfully
+      </div>
+      `;
+      setTimeout(() => {
+        alert.innerHTML = ``;
+      }, 3000);
     }
   }
 

@@ -1,7 +1,7 @@
 import DB from "../../database/dbHelper/index.ts";
 import { Request, Response } from "express";
 
-const deleteUser = async (req: Request, res: Response) => {
+const activateUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
@@ -9,14 +9,14 @@ const deleteUser = async (req: Request, res: Response) => {
       return res
         .status(400)
         .json({ message: "No id provided", status: "failed" });
-    const result = await DB.executeProcedure("deleteUser", { id });
+    const result = await DB.executeProcedure("activateUser", { id });
     if (result.rowsAffected[0] === 0)
       return res
         .status(404)
         .json({ message: "User not found", status: "failed" });
     return res
       .status(200)
-      .json({ message: "User Deactivated successfully", status: "success" });
+      .json({ message: "User activated successfully", status: "success" });
   } catch (error) {
     console.log(error);
     return res
@@ -25,4 +25,4 @@ const deleteUser = async (req: Request, res: Response) => {
   }
 };
 
-export default deleteUser;
+export default activateUser;

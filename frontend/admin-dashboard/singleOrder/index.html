@@ -3,22 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="precomanage_searchnnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&family=Outfit:wght@400;700&family=Poppins:wght@100;200;300&family=Rubik:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <title>OrderList-Admin-KO</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <title>SingleOrder-KO</title>
   </head>
   <body>
     <div class="nav">
@@ -43,26 +39,31 @@
           <li><a class="logout">Log-out</a></li>
           <li class="profileContainer">
             <span class="material-symbols-outlined"> account_circle </span>
-            <a href="" class="profile"> </a>
+            <a href="" class="profile"></a>
           </li>
         </ul>
       </div>
     </div>
     <div class="main">
-      <h1>Order List</h1>
-      <table class="order-table">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Customer ID</th>
-            <th>Product Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody class="orders">
-          <!-- Add more rows here -->
-        </tbody>
-      </table>
+      <div class="customerDetails"></div>
+      <div class="orderDetails">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Ordered At</th>
+            </tr>
+          </thead>
+          <tbody class="orders">
+            <!-- Add more rows here -->
+          </tbody>
+        </table>
+
+        <div class="total"></div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

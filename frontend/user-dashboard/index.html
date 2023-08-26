@@ -17,41 +17,58 @@
   <body>
     <div class="nav">
       <div class="logo">
-        <img src="../assets/images/Black.png" alt="">
+        <img src="../assets/images/Black.png" alt="" />
       </div>
       <div class="menu">
         <ul>
           <li>
             <div class="search">
               <span
-                ><input class="search-bar" type="search" placeholder="Search" id="searchbar" />
+                ><input
+                  class="search-bar"
+                  type="search"
+                  placeholder="Search"
+                  id="searchbar"
+                />
               </span>
-              <span id="searchicon" class="material-symbols-outlined"
-                >manage_search</span
-              >
+              <span id="searchicon" class="material-symbols-outlined"></span>
             </div>
           </li>
-          <li><a href="../authentication-page/login/index.html" >Home</a></li>
-          <span id="cart" class="material-symbols-outlined"
-                >shopping_cart_checkout</span
-              >
-            </li>
-          <li><a href="../authentication-page/login/index.html">Log-out</a></li>
-          <li><span id="profile" class="material-symbols-outlined">person</span></li>
+          <li>
+            <a href="http://127.0.0.1:5500/frontend/user-dashboard/index.html"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://127.0.0.1:5500/frontend/user-dashboard/cart/index.html"
+            >
+              <span class="material-symbols-outlined">
+                shopping_cart_checkout
+              </span>
+            </a>
+          </li>
+          <li><a href="" class="logout">Log-out</a></li>
+          <li class="profileContainer">
+            <span class="material-symbols-outlined"> account_circle </span>
+            <a href="" class="profile"> </a>
+          </li>
         </ul>
       </div>
     </div>
     <div class="hero"></div>
+    <div class="alertContainer"></div>
     <div class="my-shop-products"></div>
     <script>
-
       const cart = document.getElementById("cart");
       cart.addEventListener("click", () => {
-        window.location.href = "http://127.0.0.1:5500/frontend/user-dashboard/cart/index.html";
+        window.location.href =
+          "http://127.0.0.1:5500/frontend/user-dashboard/cart/index.html";
       });
       const logo = document.querySelector(".logo");
       logo.addEventListener("click", () => {
-        window.location.href = "../authentication-page/login/index.html"})
+        window.location.href = "../authentication-page/login/index.html";
+      });
     </script>
     <script src="script.js"></script>
   </body>

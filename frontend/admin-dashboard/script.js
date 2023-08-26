@@ -3,6 +3,8 @@ const productPrice = document.querySelector(".productPrice");
 const productDescription = document.querySelector(".productDesc");
 const productImage = document.querySelector("#image");
 const productQuantity = document.querySelector(".quantity");
+const logout = document.querySelector(".logout");
+const profile = document.querySelector(".profile");
 console.log(productQuantity);
 const addBtn = document.querySelector(".add-btn");
 const alerts = document.querySelector(".alert");
@@ -11,8 +13,21 @@ let imageUrl = "";
 
 window.onload = async () => {
   await fetchProducts();
+  const username = localStorage.getItem("loggedUser");
+  if (username !== null || username == "") {
+    profile.innerHTML = username;
+  }
+  const token = localStorage.getItem("token");
+  console.log(typeof token);
+  if (token == null || token == "") {
+    window.location.href =
+      "http://127.0.0.1:5500/frontend/authentication-page/login/index.html";
+  }
 };
-
+logout.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.reload();
+});
 // Uploading the image to cloudinary
 productImage.addEventListener("change", async (event) => {
   const target = event.target;
