@@ -49,7 +49,9 @@ const productContainer = document.querySelector(".my-shop-products");
 
 const fetchProducts = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/v1/products");
+    const res = await fetch(
+      "https://shopieapi.azurewebsites.net/api/v1/products"
+    );
     const object = await res.json();
     console.log(object);
 
@@ -85,6 +87,8 @@ const displayProducts = async (object) => {
         `;
     });
     productContainer.innerHTML = html;
+  } else {
+    productContainer.innerHTML = `<h2 style="text-align: center;">${object.message}</h2>`;
   }
 };
 
@@ -93,7 +97,7 @@ productContainer.addEventListener("click", async (e) => {
   if (e.target.classList.contains("action-btn")) {
     const productId = e.target.parentElement.id;
     const res = await fetch(
-      `http://localhost:5000/api/v1/products/${productId}`
+      `https://shopieapi.azurewebsites.net/api/v1/products/${productId}`
     );
     const object = await res.json();
     console.log(object);

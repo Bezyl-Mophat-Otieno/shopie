@@ -23,12 +23,15 @@ logout.addEventListener("click", () => {
 
 const fetchOrders = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/v1/orders", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://shopieapi.azurewebsites.net/api/v1/orders",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data = await res.json();
     console.log(data);

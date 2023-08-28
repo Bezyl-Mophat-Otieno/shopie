@@ -1,4 +1,4 @@
-const alert = document.querySelector(".alert");
+const alerts = document.querySelector(".alertContainer");
 const customers = document.querySelector(".customer-list");
 const profile = document.querySelector(".profile");
 
@@ -18,7 +18,7 @@ window.onload = async () => {
 
 const fetchCustomers = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/v1/users");
+    const res = await fetch("https://shopieapi.azurewebsites.net/api/v1/users");
     const object = await res.json();
     console.log(object);
     if (object.status === "success") {
@@ -38,11 +38,22 @@ const fetchCustomers = async () => {
       });
       customers.innerHTML = html;
     } else {
-      alert.innerHtml = object.message;
+      alerts.innerHTML = `
+      <div class = "alert">
+      ${object.message}
+      </div>
+      `;
+      setTimeout(() => {
+        alerts.innerHTML = "";
+      }, 3000);
     }
   } catch (error) {
     console.log(error);
     alert.innerHtml = object.message;
+
+    setTimeout(() => {
+      alerts.innerHTML = "";
+    }, 3000);
   }
 };
 
@@ -55,20 +66,31 @@ customers.addEventListener("click", async (e) => {
         e.target.parentElement.parentElement.firstElementChild.innerHTML;
       console.log(id);
       const res = await fetch(
-        `http://localhost:5000/api/v1/users/delete/${id}`,
+        `https://shopieapi.azurewebsites.net/api/v1/users/delete/${id}`,
         {
           method: "PUT",
         }
       );
       const object = await res.json();
       if (object.status === "success") {
-        alert.innerHTML = object.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${object.message}
+        </div>
+        `;
         setTimeout(async () => {
           alert.innerHTML = "";
           await fetchCustomers();
         }, 3000);
       } else {
-        alert.innerHTML = object.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${object.message}
+        </div>
+        `;
+        setTimeout(() => {
+          alerts.innerHTML = "";
+        }, 3000);
       }
     }
 
@@ -78,20 +100,31 @@ customers.addEventListener("click", async (e) => {
         e.target.parentElement.parentElement.firstElementChild.innerHTML;
       console.log(id);
       const res = await fetch(
-        `http://localhost:5000/api/v1/users/activate/${id}`,
+        `https://shopieapi.azurewebsites.net/api/v1/users/activate/${id}`,
         {
           method: "PUT",
         }
       );
       const object = await res.json();
       if (object.status === "success") {
-        alert.innerHTML = object.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${object.message}
+        </div>
+        `;
         setTimeout(async () => {
           alert.innerHTML = "";
           await fetchCustomers();
         }, 3000);
       } else {
-        alert.innerHTML = object.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${object.message}
+        </div>
+        `;
+        setTimeout(() => {
+          alerts.innerHTML = "";
+        }, 3000);
       }
     }
   }

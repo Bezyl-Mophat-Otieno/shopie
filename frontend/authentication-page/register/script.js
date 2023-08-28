@@ -1,4 +1,4 @@
-const alerts = document.querySelector(".alert");
+const alerts = document.querySelector(".alertContainer");
 const email = document.querySelector(".email");
 const username = document.querySelector(".username");
 const password = document.querySelector(".password");
@@ -19,7 +19,13 @@ const checkRegisterInputs = async () => {
   } else {
     if (passwordValue !== password2Value) {
       let html = `passwords do not match`;
-      alerts.innerHTML = html;
+
+      alerts.innerHTML = `
+      <div class = "alert">
+      ${html}
+      </div>
+      `;
+
       setTimeout(() => {
         alerts.innerHTML = "";
       }, 2000);
@@ -38,30 +44,46 @@ registerBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   const user = await checkRegisterInputs();
   try {
-    const res = await fetch("http://localhost:5000/api/v1/users/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+    const res = await fetch(
+      "https://shopieapi.azurewebsites.net/api/v1/users/add",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
-      alerts.innerHTML = data.message;
+      alerts.innerHTML = `
+      <div class = "alert">
+      ${data.message}
+      </div>
+      `;
+
       setTimeout(() => {
         window.location.href =
           "http://127.0.0.1:5500/frontend/authentication-page/login/index.html";
       }, 2000);
     }
     if (data.status === "failed") {
-      alerts.innerHTML = data.message;
+      alerts.innerHTML = `
+      <div class = "alert">
+      ${data.message}
+      </div>
+      `;
       setTimeout(() => {
         alerts.innerHTML = "";
       }, 2000);
     }
   } catch (error) {
-    alert(error);
+    alerts.innerHTML = `
+    <div class = "alert">
+    ${error.message}
+    </div>
+    `;
     console.log(error);
     // alerts.innerHTML = error.message;
   }

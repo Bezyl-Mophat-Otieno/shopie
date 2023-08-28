@@ -13,7 +13,9 @@ const productId = window.location.search.split("=")[1];
 let product;
 const fetchProduct = async () => {
   let html = "";
-  const res = await fetch(`http://localhost:5000/api/v1/products/${productId}`);
+  const res = await fetch(
+    `https://shopieapi.azurewebsites.net/api/v1/products/${productId}`
+  );
   const object = await res.json();
   console.log(object);
   if (object.status == "success") {

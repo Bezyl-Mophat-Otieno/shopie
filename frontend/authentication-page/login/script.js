@@ -1,4 +1,4 @@
-const alerts = document.querySelector(".alert");
+const alerts = document.querySelector(".alertContainer");
 const email = document.querySelector(".email");
 const password = document.querySelector(".password");
 const loginBtn = document.querySelector("#loginBtn");
@@ -7,7 +7,13 @@ const checkLoginInputs = async () => {
   const emailValue = email.value.trim();
   const passwordValue = password.value.trim();
   if (emailValue.length == 0 || passwordValue.length == 0) {
-    alerts.innerHTML = "Please fill in all fields";
+    alerts.innerHTML = `
+    
+    <div class="alert" >
+    "Please fill in all fields"
+    </div>
+
+    `;
   } else {
     let user = {
       email: email.value,
@@ -21,31 +27,41 @@ loginBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   const user = await checkLoginInputs();
   try {
-    const res = await fetch("http://localhost:5000/api/v1/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+    const res = await fetch(
+      "https://shopieapi.azurewebsites.net/api/v1/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
     const data = await res.json();
     if (data.status === "success") {
-      alerts.innerHTML = data.message;
+      alerts.innerHTML = `
+      <div class = "alert">
+      ${data.message}
+      </div>
+      `;
 
       const token = data.token;
       if (token) {
         // store the token to localstorage
         localStorage.setItem("token", token);
         // get loggedInUser using the token
-        const res = await fetch("http://localhost:5000/api/v1/users/user", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            accept: "application/json",
-            token: token,
-          },
-        });
+        const res = await fetch(
+          "https://shopieapi.azurewebsites.net/api/v1/users/user",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              accept: "application/json",
+              token: token,
+            },
+          }
+        );
         const data = await res.json();
         // store the user in local storage
         localStorage.setItem("loggedUser", data.user.username);
@@ -60,19 +76,31 @@ loginBtn.addEventListener("click", async (e) => {
       }
     } else {
       if (data.status === "failed") {
-        alerts.innerHTML = data.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${data.message}
+        </div>
+        `;
         setTimeout(() => {
           alerts.innerHTML = "";
         }, 2000);
       } else {
-        alerts.innerHTML = data.message;
+        alerts.innerHTML = alerts.innerHTML = `
+        <div class = "alert">
+        ${data.message}
+        </div>
+        `;
         setTimeout(() => {
           alerts.innerHTML = "";
         }, 2000);
       }
     }
   } catch (err) {
-    alert(err.message);
+    alerts.innerHTML = `
+    <div class = "alert">
+    ${err.message}
+    </div>
+    `;
     console.log(err);
   }
 });

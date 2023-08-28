@@ -56,10 +56,18 @@ body {
 }
 
 .alert {
-  margin-bottom: 5vh;
+  margin-top: 2vh;
+  width: 30vw;
+  height: 7vh;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: rgb(0, 128, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 20px;
-  color: red;
 }
+
 .brand-name {
   font-size: 50px;
 }
@@ -74,7 +82,7 @@ body {
 
 .logo {
   width: 80px;
-  height: 80px;
+  height: 70px;
   cursor: pointer;
 }
 .logo img {
@@ -141,4 +149,26 @@ body {
   width: 90%;
   height: 80vh;
   object-fit: cover;
+}
+
+@media screen and (max-width: 440px) {
+  .brand {
+    display: none;
+  }
+  .form-container {
+    width: 90vw;
+    /* border: 2px solid green; */
+  }
+  .form-container > input {
+    width: 90%;
+  }
+  .form-container > button {
+    width: 90%;
+  }
+  .register-link {
+    font-size: 1.5rem;
+  }
+  .alert {
+    width: 90vw;
+  }
 }

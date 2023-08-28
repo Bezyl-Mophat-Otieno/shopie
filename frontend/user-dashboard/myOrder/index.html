@@ -7,17 +7,21 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&family=Outfit:wght@400;700&family=Poppins:wght@100;200;300&family=Rubik:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
+
     <link rel="stylesheet" href="style.css" />
-    <title>Cart-KO</title>
+    <title>MyOrder-KO</title>
   </head>
   <body>
     <div class="nav">
       <div class="logo">
-        <img src="../../assets/images/Black.png" alt="" />
+        <h1 class="brand-name">
+          <img src="../../assets/images/Black.png" alt="" />
+        </h1>
       </div>
       <div class="menu">
         <ul>
@@ -25,6 +29,16 @@
             <a href="http://127.0.0.1:5500/frontend/user-dashboard/index.html"
               >Home</a
             >
+          </li>
+          <li>
+            <a
+              id="cart"
+              href="http://127.0.0.1:5500/frontend/user-dashboard/cart/index.html"
+            >
+              <span class="material-symbols-outlined">
+                shopping_cart_checkout
+              </span>
+            </a>
           </li>
           <li><a class="logout">Log-out</a></li>
           <li class="profileContainer">
@@ -34,20 +48,27 @@
         </ul>
       </div>
     </div>
-    <div class="alertContainer"></div>
-    <div class="container"></div>
-    <div class="emptyCart"></div>
-    <div class="productContainer"></div>
-    <div id="paypal-button-container"></div>
-    <script>
-      const logo = document.querySelector(".logo");
-      logo.addEventListener("click", () => {
-        window.location.href = "../../authentication-page/login/index.html";
-      });
-    </script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AVgHKCU6uBb-hrzfY9Mwx7xROjHAlPDymhldcdtB7ScpL6EsIAMX8UY8DpySF0_wnw-6Mjxw_rYz9MDW&currency=USD"></script>
-    <script></script>
+    <div class="main">
+      <div class="customerDetails"></div>
+      <div class="orderDetails">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th class="thead">Order ID</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Ordered At</th>
+            </tr>
+          </thead>
+          <tbody class="orders">
+            <!-- Add more rows here -->
+          </tbody>
+        </table>
 
+        <div class="total"></div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@ const logout = document.querySelector(".logout");
 const profile = document.querySelector(".profile");
 console.log(productQuantity);
 const addBtn = document.querySelector(".add-btn");
-const alerts = document.querySelector(".alert");
+const alerts = document.querySelector(".alertContainer");
 const productContainer = document.querySelector(".product-container");
 let imageUrl = "";
 
@@ -70,7 +70,11 @@ const checkInputs = async () => {
     productDescValue.length == 0 ||
     productQuantityValue.length == 0
   ) {
-    alerts.innerHTML = "Please fill in all fields";
+    alerts.innerHTML = `
+    <div class="alert" >
+    Please Fill in all fields
+    </div>
+    `;
   } else {
     let product = {
       name: productName.value,
@@ -90,20 +94,27 @@ addBtn.addEventListener("click", async (e) => {
   if (addBtn.innerHTML == "Add Product") {
     const product = await checkInputs();
     try {
-      const res = await fetch("http://localhost:5000/api/v1/products/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-        body: JSON.stringify(product),
-      });
+      const res = await fetch(
+        "https://shopieapi.azurewebsites.net/api/v1/products/add",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+          body: JSON.stringify(product),
+        }
+      );
       console.log(product);
       const data = await res.json();
       console.log(data);
       if (data.status === "success") {
         await fetchProducts();
-        alerts.innerHTML = data.message;
+        alerts.innerHTML = `
+        <div class="alert">
+        ${data.message}
+        </div>
+        `;
         setTimeout(() => {
           alerts.innerHTML = "";
           productName.value = "";
@@ -133,7 +144,7 @@ addBtn.addEventListener("click", async (e) => {
     console.log(product);
     try {
       const res = await fetch(
-        `http://localhost:5000/api/v1/products/update/${id}`,
+        `https://shopieapi.azurewebsites.net/api/v1/products/update/${id}`,
         {
           method: "PUT",
           headers: {
@@ -148,7 +159,11 @@ addBtn.addEventListener("click", async (e) => {
       console.log(data);
       if (data.status === "success") {
         await fetchProducts();
-        alerts.innerHTML = data.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${data.message}
+        </div>
+        `;
         setTimeout(() => {
           alerts.innerHTML = "";
           productName.value = "";
@@ -156,16 +171,25 @@ addBtn.addEventListener("click", async (e) => {
           productDescription.value = "";
           productImage.value = "";
           productQuantity.value = "";
+          addBtn.innerHTML = "Add Product";
         }, 3000);
       } else {
-        alerts.innerHTML = data.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${data.message}
+        </div>
+        `;
         setTimeout(() => {
           alerts.innerHTML = "";
         }, 3000);
       }
     } catch (error) {
       alert(error.message);
-      alerts.innerHTML = data.message;
+      alerts.innerHTML = `
+      <div class = "alert">
+      ${error.message}
+      </div>
+      `;
       setTimeout(() => {
         alerts.innerHTML = "";
       }, 3000);
@@ -178,7 +202,9 @@ addBtn.addEventListener("click", async (e) => {
 const fetchProducts = async () => {
   let html = "";
   try {
-    const res = await fetch("http://localhost:5000/api/v1/products");
+    const res = await fetch(
+      "https://shopieapi.azurewebsites.net/api/v1/products"
+    );
     const object = await res.json();
     console.log(object);
 
@@ -222,18 +248,25 @@ productContainer.addEventListener("click", async (e) => {
     const id = e.target.parentElement.parentElement.id;
     console.log(id);
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/products/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://shopieapi.azurewebsites.net/api/v1/products/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
       const data = await res.json();
       console.log(data);
       if (data.status === "success") {
         await fetchProducts();
-        alerts.innerHTML = data.message;
+        alerts.innerHTML = `
+        <div class = "alert">
+        ${data.message}
+        </div>
+        `;
         setTimeout(async () => {
           alerts.innerHTML = "";
           await fetchProducts();
@@ -258,13 +291,16 @@ productContainer.addEventListener("click", async (e) => {
     const id = e.target.parentElement.parentElement.id;
     productContainer.setAttribute("id", id);
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/products/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://shopieapi.azurewebsites.net/api/v1/products/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+        }
+      );
       const object = await res.json();
       console.log(object);
       const product = object.product;

@@ -1,14 +1,27 @@
 window.onload = async () => {
   await fetchUser();
   await fetchOrder();
+  const token = localStorage.getItem("token");
+  console.log(typeof token);
+  if (token == null || token == "") {
+    window.location.href =
+      "http://127.0.0.1:5500/frontend/authentication-page/login/index.html";
+  }
   profile.innerHTML = localStorage.getItem("loggedUser");
 };
-const id = window.location.search.split("=")[1];
+
+const id = localStorage.getItem("user_id");
 console.log(id);
 const customerDetails = document.querySelector(".customerDetails");
 const productContainer = document.querySelector(".productContainer");
 const orders = document.querySelector(".orders");
 const profile = document.querySelector(".profile");
+const logout = document.querySelector(".logout");
+
+logout.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.reload();
+});
 
 const fetchUser = async () => {
   try {

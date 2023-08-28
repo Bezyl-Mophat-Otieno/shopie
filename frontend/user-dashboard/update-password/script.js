@@ -4,6 +4,13 @@ const password = document.querySelector(".password");
 const confirmPassword = document.querySelector(".password2");
 const setBtn = document.querySelector(".setBtn");
 
+window.onload = () => {
+  const token = localStorage.getItem("reset_token");
+  if (token == null || token == "") {
+    window.location.href =
+      "http://127.0.0.1:5500/frontend/user-dashboard/reset-password/index.html ";
+  }
+};
 const verifyInputs = () => {
   if (
     email.value === "" ||
@@ -31,11 +38,17 @@ setBtn.addEventListener("click", async () => {
     console.log(userId);
     const verified = verifyInputs();
     if (verified) {
-      const res = await fetch(`http://localhost:5000/api/v1/users/${userId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.value, password: password.value }),
-      });
+      const res = await fetch(
+        `https://shopieapi.azurewebsites.net/api/v1/users/${userId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email.value,
+            password: password.value,
+          }),
+        }
+      );
       const data = await res.json();
       console.log(data);
       if (data.status == "success") {
